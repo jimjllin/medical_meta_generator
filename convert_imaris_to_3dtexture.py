@@ -25,20 +25,17 @@ def read_ims_file(filename):
     return data
 
 
+
 def convert_to_raw(data, output_filename):
     """
     將 3D 數據轉換為 raw 格式並保存到文件。
     """
     print("開始轉換數據為 raw 格式...")
+    
     data = data.astype(np.uint8)
-    depth = data.shape[2]  # 取得數據的深度
-
+    data_bytes = data.tobytes()
     with open(output_filename, 'wb') as file:
-        for i in range(depth):
-            # 處理每一層並寫入文件
-            file.write(data[:, :, i].tobytes())
-            print(f"已轉換並寫入層 {i + 1}/{depth}")
-
+        file.write(data_bytes)
     print(f"文件 '{output_filename}' 已生成.")
 
 def main():
