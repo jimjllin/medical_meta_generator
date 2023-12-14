@@ -16,15 +16,11 @@ def read_ims_file(filename):
     with h5py.File(filename, 'r') as file:
         # 根據你的檔案結構調整這個路徑
         data_path = 'DataSet/ResolutionLevel 0/TimePoint 0/Channel 0/Data'
-        dataset = file[data_path]
-        data_shape = dataset.shape
-        data = np.empty(data_shape, dtype=dataset.dtype)
+        data = file[data_path][()]
 
-        for i in range(data_shape[2]):
-            data[:, :, i] = dataset[:, :, i]
-            print(f"已讀取層 {i + 1}/{data_shape[2]}")
-
+    # 打印出 voxel 的尺寸
     print(f"Voxel 尺寸: {data.shape}")
+
     print("讀取完成。")
     return data
 
