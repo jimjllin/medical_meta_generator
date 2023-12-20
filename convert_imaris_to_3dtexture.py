@@ -26,6 +26,7 @@ def read_ims_file(filename):
         data = file[data_path][()]
 
     print(f"Voxel 尺寸: {data.shape}")
+    print(f"數據類型: {data.dtype}")
     print("讀取完成。")
     return data
 
