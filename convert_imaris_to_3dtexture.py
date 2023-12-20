@@ -14,13 +14,18 @@ def read_ims_file(filename):
     """
     print("開始讀取 .ims 檔案...")
     with h5py.File(filename, 'r') as file:
-        # 根據你的檔案結構調整這個路徑
-        data_path = 'DataSet/ResolutionLevel 0/TimePoint 0/Channel 0/Data'
+        # 確定通道數量
+        base_path = 'DataSet/ResolutionLevel 0/TimePoint 0/'
+        channels = [key for key in file[base_path].keys() if key.startswith('Channel ')]
+        num_channels = len(channels)
+        print(f"總共發現 {num_channels} 個通道。")
+
+        # 選擇要讀取的通道
+        channel_to_read = 0  # 例如，這裡選擇第一個通道
+        data_path = f'{base_path}Channel {channel_to_read}/Data'
         data = file[data_path][()]
 
-    # 打印出 voxel 的尺寸
     print(f"Voxel 尺寸: {data.shape}")
-
     print("讀取完成。")
     return data
 
