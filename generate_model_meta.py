@@ -39,9 +39,9 @@ def generate_json(directory):
     all_files = os.listdir(directory)
     model_files = [f for f in all_files if not f.startswith('.') and 
                    (fnmatch.fnmatch(f, '*.ply') or fnmatch.fnmatch(f, '*.glb') or 
-                    fnmatch.fnmatch(f, '*.stl') or fnmatch.fnmatch(f, '*.fbx'))]
+                    fnmatch.fnmatch(f, '*.stl') or fnmatch.fnmatch(f, '*.fbx') or 
+                    fnmatch.fnmatch(f, '*.obj'))]  # 加入對 *.obj 檔案的處理
     
-    # 找出共同前綴
     common_prefix = find_common_prefix(model_files)
 
     distinct_colors = generate_distinct_colors(len(model_files))
