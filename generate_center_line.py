@@ -5,7 +5,7 @@ import os
 
 # 定義一個函數來將 CSV 數據轉換為指定的 JSON 格式
 def convert_to_json(csv_file_path):
-    df = pd.read_csv(csv_file_path)
+    df = pd.read_csv(csv_file_path, header=None)
 
     points = []
     paths = []
