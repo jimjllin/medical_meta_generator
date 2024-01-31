@@ -26,6 +26,7 @@ def convert_to_json(csv_file_path):
 
         paths.append({"Start": point_index[start_key], "End": point_index[end_key]})
 
+    '''
     return {
         "Vertices": points,
         "Edges": paths,
@@ -33,6 +34,16 @@ def convert_to_json(csv_file_path):
             "Start": 0,
             "End": len(points) - 1
         }
+    }
+
+    '''
+
+    #new format
+    return {
+        "Vertices": points,
+        "Edges": paths,
+        "Paths": [],
+        "DefaultPath":0
     }
 
 def main():
