@@ -6,10 +6,10 @@ def read_dicom_metadata(dicom_file):
     try:
         ds = pydicom.dcmread(dicom_file, force=True)
         metadata = {
-            "Patient ID": ds.PatientID,
-            "Patient Name": str(ds.PatientName),
-            "Patient Birth Date": ds.get("PatientBirthDate", "未知"),
-            "Study Description": ds.get("StudyDescription", "未知")
+            "PatientID": ds.PatientID,
+            "PatientName": str(ds.PatientName),
+            "PatientBirthDate": ds.get("PatientBirthDate", "未知"),
+            "StudyDescription": ds.get("StudyDescription", "未知")
         }
         return metadata
     except Exception as e:
